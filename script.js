@@ -9,37 +9,58 @@ const cpu = {
     cpuValues: []
 }
 
-turnUser()
+// turnUser()
 const userFlow = (value)=>{
+
+        // player.playerValues.pop();
+        
     
+
     player.playerValues.push(gameBoard.board[value])
     delete gameBoard.board[value]
     player.playerValues.sort()
     console.log('player values ' + player.playerValues);
-    value = null
-
-    // if(player.playerValues.includes('a') && player.playerValues.includes('b') && player.playerValues.includes('c')){
-    //     alert('Win')
-    // }else if(player.playerValues.length == 5){
-    //     alert('Game Over')
-    // }
-}
-
-const cpuFlow = (value)=>{
     
-    cpu.cpuValues.push(gameBoard.board[value])
-    delete gameBoard.board[value]
-    cpu.cpuValues.sort()
-    console.log('cpu values ' + cpu.cpuValues);
 
+    if(player.playerValues.includes('a') && player.playerValues.includes('b') && player.playerValues.includes('c')){
+        console.log('win');
+    }else if(player.playerValues.includes('d') && player.playerValues.includes('e') && player.playerValues.includes('f')){
+        alert('Win DEF')
+    }else if(player.playerValues.includes('g') && player.playerValues.includes('h') && player.playerValues.includes('i')){
+        alert('Win GHI')
+    }else if(player.playerValues.includes('a') && player.playerValues.includes('d') && player.playerValues.includes('g')){
+        alert('Win ADG')
+    }else if(player.playerValues.includes('b') && player.playerValues.includes('e') && player.playerValues.includes('h')){
+        alert('Win BEH')
+    }else if(player.playerValues.includes('c') && player.playerValues.includes('f') && player.playerValues.includes('i')){
+        alert('Win CFI')
+    }else if(player.playerValues.includes('a') && player.playerValues.includes('e') && player.playerValues.includes('i')){
+        alert('Win AEI')
+    }else if(player.playerValues.includes('c') && player.playerValues.includes('e') && player.playerValues.includes('g')){
+        alert('Win CEG')
+    }
 
-    // if(cpu.cpuValues.includes('a') && cpu.cpuValues.includes('b') && cpu.cpuValues.includes('c')){
-    //     alert('Win')
-    // }else if(cpu.cpuValues.length == 5){
-    //     alert('Game Over')
-    // }
-    // alert(cpu.cpuValues)
 }
+
+// if(player.playerValues.length == 5){
+//     alert('Game Over')
+// }
+
+// const cpuFlow = (value)=>{
+    
+//     cpu.cpuValues.push(gameBoard.board[value])
+//     delete gameBoard.board[value]
+//     cpu.cpuValues.sort()
+//     console.log('cpu values ' + cpu.cpuValues);
+
+
+//     if(cpu.cpuValues.includes('a') && cpu.cpuValues.includes('b') && cpu.cpuValues.includes('c')){
+//         alert('Win')
+//     }else if(cpu.cpuValues.length == 5){
+//         alert('Game Over')
+//     }
+//     alert(cpu.cpuValues)
+// }
 
 let button0 = document.getElementById('0');
 let button1 = document.getElementById('1');
@@ -51,50 +72,47 @@ let button6 = document.getElementById('6');
 let button7 = document.getElementById('7');
 let button8 = document.getElementById('8');
 
-
-
-function turnUser(){
-    let changeTurn = document.querySelector('.main-container');
-    changeTurn.addEventListener('click', function (){
-        changeTurn.style.backgroundColor = 'blue'
-
     
-        button0.addEventListener('click', function(){
-            userFlow(0)
-            button0.style.backgroundColor = 'white';
-            button0 = null
-        })
-        button1.addEventListener('click', function(){userFlow(1); })
-        button2.addEventListener('click', function(){userFlow(2); })
-        button3.addEventListener('click', function(){userFlow(3); })
-        button4.addEventListener('click', function(){userFlow(4); })
-        button5.addEventListener('click', function(){userFlow(5); })
-        button6.addEventListener('click', function(){userFlow(6); })
-        button7.addEventListener('click', function(){userFlow(7); })
-        button8.addEventListener('click', function(){userFlow(8); })
-    })
-}
+button0.addEventListener('click', function userClick0(){
+    userFlow(0);
+    button0.removeEventListener('click', userClick0);
+}); 
+button1.addEventListener('click', function userClick1(){
+    userFlow(1);
+    button1.removeEventListener('click', userClick1)
+}); 
+button2.addEventListener('click', function userClick2(){
+    userFlow(2);
+    button2.removeEventListener('click', userClick2)
 
-// function turnCPU(){
-//     let changeTurn = document.querySelector('.main-container');
-//     changeTurn.addEventListener('click', function (){
-//         changeTurn.style.backgroundColor = 'green'
-    
-//         button0.addEventListener('click', function(){
-//             cpuFlow(0)
-//             button0.style.backgroundColor = 'white'    
-//         })
-//         button1.addEventListener('click', function(){cpuFlow(1); return turnUser()})
-//         button2.addEventListener('click', function(){cpuFlow(2); return turnUser()})
-//         button3.addEventListener('click', function(){cpuFlow(3); return turnUser()})
-//         button4.addEventListener('click', function(){cpuFlow(4); return turnUser()})
-//         button5.addEventListener('click', function(){cpuFlow(5); return turnUser()})
-//         button6.addEventListener('click', function(){cpuFlow(6); return turnUser()})
-//         button7.addEventListener('click', function(){cpuFlow(7); return turnUser()})
-//         button8.addEventListener('click', function(){cpuFlow(8); return turnUser()})
-//     })
-// }
+});
+button3.addEventListener('click', function userClick3(){
+    userFlow(3);
+    button3.removeEventListener('click', userClick3)
 
+}); 
+button4.addEventListener('click', function userClick4(){
+    userFlow(4);
+    button4.removeEventListener('click', userClick4)
 
+}); 
+button5.addEventListener('click', function userClick5(){
+    userFlow(5);
+    button5.removeEventListener('click', userClick5)
 
+});
+button6.addEventListener('click', function userClick6(){
+    userFlow(6);
+    button6.removeEventListener('click', userClick6)
 
+}); 
+button7.addEventListener('click', function userClick7(){
+    userFlow(7);
+    button7.removeEventListener('click', userClick7)
+
+}); 
+button8.addEventListener('click', function userClick8(){
+    userFlow(8);
+    button8.removeEventListener('click', userClick8)
+
+});
