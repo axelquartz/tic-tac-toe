@@ -1,5 +1,12 @@
 *{
-    background-color: aqua;
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+    align-items: center;
+    font-family: roboto, sans-serif;
+}
+h1{
+    text-align: center;
+    margin: 100px;
 }
 button{
     width: 200px;
@@ -8,13 +15,14 @@ button{
 }
 .main-container{
     display: grid;
-    grid-template-columns: 200px 200px 200px;
-    grid-template-rows: auto auto auto;
     gap: 5px;
+    grid-template-columns: 200px 200px 200px;
+    align-self: center;
 }
 .square{
     width: 200px;
     height: 200px;
-    background-color: yellow;
-    border: solid 1px black;
+    background-color: rgb(69, 69, 69);
+    border: solid 2px #ddd;
+    border-radius: 30px;
 }

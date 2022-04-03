@@ -38,13 +38,11 @@ const userFlow = (value)=>{
         alert('Win AEI')
     }else if(player.playerValues.includes('c') && player.playerValues.includes('e') && player.playerValues.includes('g')){
         alert('Win CEG')
+    }else if(player.playerValues.length == 5){
+        alert('Game Over')
     }
-
+    return
 }
-
-// if(player.playerValues.length == 5){
-//     alert('Game Over')
-// }
 
 // const cpuFlow = (value)=>{
     
@@ -62,6 +60,7 @@ const userFlow = (value)=>{
 //     alert(cpu.cpuValues)
 // }
 
+let mainBoard = document.querySelector('.main-container');
 let button0 = document.getElementById('0');
 let button1 = document.getElementById('1');
 let button2 = document.getElementById('2');
@@ -72,47 +71,74 @@ let button6 = document.getElementById('6');
 let button7 = document.getElementById('7');
 let button8 = document.getElementById('8');
 
+// mainBoard.addEventListener('click', )
+
+
+    function testObject () {
+            button0.addEventListener('click', function userClick0(){
+            userFlow(0);
+            button0.removeEventListener('click', userClick0)}
+    }
+
+
+            // Button Actions
+        aSquare:
+            button0.addEventListener('click', function userClick0(){
+            userFlow(0);
+            button0.removeEventListener('click', userClick0);
+            mainBoard.style.backgroundColor = 'purple'
+            return
+        })
+        bSquare:
+            button1.addEventListener('click', function userClick1(){
+            userFlow(1);
+            button1.removeEventListener('click', userClick1);
+            mainBoard.style.backgroundColor = 'blue'
+            return
+        })
+        cSquare:
+            button2.addEventListener('click', function userClick2(){
+            userFlow(2);
+            button2.removeEventListener('click', userClick2)
+            mainBoard.style.backgroundColor = 'orange'
+            return
+        }
+        dSquare:
+            button3.addEventListener('click', function userClick3(){
+            userFlow(3);
+            button3.removeEventListener('click', userClick3)
+
+        })
+        eSquare:
+            button4.addEventListener('click', function userClick4(){
+            userFlow(4);
+            button4.removeEventListener('click', userClick4)
+
+        })
+        fSquare:
+            button5.addEventListener('click', function userClick5(){
+            userFlow(5);
+            button5.removeEventListener('click', userClick5)
+        })
+        gSquare:
+            button6.addEventListener('click', function userClick6(){
+            userFlow(6);
+            button6.removeEventListener('click', userClick6)
+
+        })
+        hSquare:
+            button7.addEventListener('click', function userClick7(){
+            userFlow(7);
+            button7.removeEventListener('click', userClick7)
+
+        })
+        iSquare:
+            button8.addEventListener('click', function userClick8(){
+            userFlow(8);
+            button8.removeEventListener('click', userClick8)
+
+        })
+        // Button Actions
     
-button0.addEventListener('click', function userClick0(){
-    userFlow(0);
-    button0.removeEventListener('click', userClick0);
-}); 
-button1.addEventListener('click', function userClick1(){
-    userFlow(1);
-    button1.removeEventListener('click', userClick1)
-}); 
-button2.addEventListener('click', function userClick2(){
-    userFlow(2);
-    button2.removeEventListener('click', userClick2)
 
-});
-button3.addEventListener('click', function userClick3(){
-    userFlow(3);
-    button3.removeEventListener('click', userClick3)
 
-}); 
-button4.addEventListener('click', function userClick4(){
-    userFlow(4);
-    button4.removeEventListener('click', userClick4)
-
-}); 
-button5.addEventListener('click', function userClick5(){
-    userFlow(5);
-    button5.removeEventListener('click', userClick5)
-
-});
-button6.addEventListener('click', function userClick6(){
-    userFlow(6);
-    button6.removeEventListener('click', userClick6)
-
-}); 
-button7.addEventListener('click', function userClick7(){
-    userFlow(7);
-    button7.removeEventListener('click', userClick7)
-
-}); 
-button8.addEventListener('click', function userClick8(){
-    userFlow(8);
-    button8.removeEventListener('click', userClick8)
-
-});
