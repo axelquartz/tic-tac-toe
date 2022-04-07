@@ -22,19 +22,33 @@ let button5 = document.getElementById('5');
 let button6 = document.getElementById('6');
 let button7 = document.getElementById('7');
 let button8 = document.getElementById('8');
-let colorPick = document.getElementById('color-select')
+let title = document.getElementById('title')
+let playersInputs = document.getElementById('user-inputs')
+let player1Color = document.getElementById('color-select');
+let player1Name = document.getElementById('name-select');
+let player2Color = document.getElementById('color-select-2');
+let player2Name = document.getElementById('name-2-select');
+let playersSubmit = document.getElementById('submit-players');
+let playerDisplayInfo = document.createElement('h3');
 
 
+// Submit player 1 information
+playersSubmit.addEventListener('click', function(){
+    console.log(player1Name.value);
+    playersInputs.remove()
+    playerDisplayInfo.innerText = `${player1Name.value} vs ${player2Name.value}`
+    title.append(playerDisplayInfo)
+})
 
 // Have control of turn switching between player 1 and player 2
 function checkTurn(button, nameButton){
     if (playerTurn === 'player1') {
-        nameButton.style.backgroundColor = colorPick.value;
+        nameButton.style.backgroundColor = player1Color.value;
         playerTurn = 'player2';
         return player1Turn(button);
 
     }else if(playerTurn === 'player2' ){
-        nameButton.style.backgroundColor = '#3b18ff';
+        nameButton.style.backgroundColor = player2Color.value;
         playerTurn = 'player1';
         return player2Turn(button);
     }
