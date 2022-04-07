@@ -1,7 +1,7 @@
 const gameBoard = {
     board: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',]
 }
-const player = {
+const player1 = {
     playerValues: []
 }
 
@@ -9,71 +9,10 @@ const player2 = {
     player2Values: []
 }
 
-// User Turn
-const userFlow = (value)=>{        
-
-    player.playerValues.push(gameBoard.board[value])
-    delete gameBoard.board[value]
-    player.playerValues.sort()
-    console.log('player values ' + player.playerValues);
-    
-
-    if(player.playerValues.includes('a') && player.playerValues.includes('b') && player.playerValues.includes('c')){
-        console.log('win');
-    }else if(player.playerValues.includes('d') && player.playerValues.includes('e') && player.playerValues.includes('f')){
-        alert('Win DEF')
-    }else if(player.playerValues.includes('g') && player.playerValues.includes('h') && player.playerValues.includes('i')){
-        alert('Win GHI')
-    }else if(player.playerValues.includes('a') && player.playerValues.includes('d') && player.playerValues.includes('g')){
-        alert('Win ADG')
-    }else if(player.playerValues.includes('b') && player.playerValues.includes('e') && player.playerValues.includes('h')){
-        alert('Win BEH')
-    }else if(player.playerValues.includes('c') && player.playerValues.includes('f') && player.playerValues.includes('i')){
-        alert('Win CFI')
-    }else if(player.playerValues.includes('a') && player.playerValues.includes('e') && player.playerValues.includes('i')){
-        alert('Win AEI')
-    }else if(player.playerValues.includes('c') && player.playerValues.includes('e') && player.playerValues.includes('g')){
-        alert('Win CEG')
-    }else if(player.playerValues.length == 5){
-        alert('Game Over')
-    }
-    return
-}
-
-// User Turn
-const user2Flow = (value)=>{        
-
-    player2.player2Values.push(gameBoard.board[value])
-    delete gameBoard.board[value]
-    player2.player2Values.sort()
-    console.log('player 2 values ' + player2.player2Values);
-    
-
-    if(player2.player2Values.includes('a') && player2.player2Values.includes('b') && player2.player2Values.includes('c')){
-        console.log('win');
-    }else if(player2.player2Values.includes('d') && player2.player2Values.includes('e') && player2.player2Values.includes('f')){
-        alert('Win DEF')
-    }else if(player2.player2Values.includes('g') && player2.player2Values.includes('h') && player2.player2Values.includes('i')){
-        alert('Win GHI')
-    }else if(player2.player2Values.includes('a') && player2.player2Values.includes('d') && player2.player2Values.includes('g')){
-        alert('Win ADG')
-    }else if(player2.player2Values.includes('b') && player2.player2Values.includes('e') && player2.player2Values.includes('h')){
-        alert('Win BEH')
-    }else if(player2.player2Values.includes('c') && player2.player2Values.includes('f') && player2.player2Values.includes('i')){
-        alert('Win CFI')
-    }else if(player2.player2Values.includes('a') && player2.player2Values.includes('e') && player2.player2Values.includes('i')){
-        alert('Win AEI')
-    }else if(player2.player2Values.includes('c') && player2.player2Values.includes('e') && player2.player2Values.includes('g')){
-        alert('Win CEG')
-    }else if(player2.player2Values.length == 5){
-        alert('Game Over')
-    }
-    return
-}
-
-// Buttons and Board DOM
-let mainBoard = document.querySelector('.main-container');
-let testButton = document.querySelector('#test-button')
+// Initial variables
+let playerColor;
+let playerTurn = 'player1';
+let board = document.querySelector('.main-container');
 let button0 = document.getElementById('0');
 let button1 = document.getElementById('1');
 let button2 = document.getElementById('2');
@@ -83,123 +22,93 @@ let button5 = document.getElementById('5');
 let button6 = document.getElementById('6');
 let button7 = document.getElementById('7');
 let button8 = document.getElementById('8');
-let userclicked = false
-
-// Player Turn DOM
-let playerTurn = (function(){
-
-    let activateButtons = function(){
-        // Button Actions
-
-        let press0 = (n) => {
-            
-                userFlow(n);
-            button0.removeEventListener('click', press0.activate0);
-            button0.style.backgroundColor = 'yellow';
-            
-        }
-
-        let press1 = (function(){
-            userFlow(1);
-            button1.removeEventListener('click', press1);
-            button1.style.backgroundColor = 'yellow';
-        })
+let title = document.getElementById('title')
+let playersInputs = document.getElementById('user-inputs')
+let player1Color = document.getElementById('color-select');
+let player1Name = document.getElementById('name-select');
+let player2Color = document.getElementById('color-select-2');
+let player2Name = document.getElementById('name-2-select');
+let playersSubmit = document.getElementById('submit-players');
+let playerDisplayInfo = document.createElement('h3');
 
 
+// Submit player 1 information
+playersSubmit.addEventListener('click', function(){
+    console.log(player1Name.value);
+    playersInputs.remove()
+    playerDisplayInfo.innerText = `${player1Name.value} vs ${player2Name.value}`
+    title.append(playerDisplayInfo)
+})
 
+// Have control of turn switching between player 1 and player 2
+function checkTurn(button, nameButton){
+    if (playerTurn === 'player1') {
+        nameButton.style.backgroundColor = player1Color.value;
+        playerTurn = 'player2';
+        return player1Turn(button);
 
-        button8.addEventListener('click', function userClick8(){
-        userFlow(8);
-        button8.removeEventListener('click', userClick8);
-        button8.style.backgroundColor = 'yellow';
-        this.userClicked = true
-
-        })
-
-        if (this.userclicked = true){
-            return player2Turn.activateButtons
-        }
-        // Button Actions
-
-
-        }
-   
-
-
-return{activateButtons} 
-    
-})()
-
-
-// Player 2 Turn DOM
-let player2Turn = (function(){
-
-    let activateButtons = function(){
-
-        // Button Actions
-        button0.addEventListener('click', function userClick0(){
-        user2Flow(0);
-        button0.removeEventListener('click', userClick0);
-        button0.style.backgroundColor = 'yellow';
-        return playerTurn.activateButtons();
-        })
-
-        button1.addEventListener('click', function userClick1(){
-        player2.player2Values.shift()
-        user2Flow(1);
-        button1.removeEventListener('click', userClick1);
-        button1.style.backgroundColor = 'yellow';
-        return playerTurn.activateButtons();
-
-        })
-        button2.addEventListener('click', function userClick2(){
-        user2Flow(2);
-        button2.removeEventListener('click', userClick2);
-        button2.style.backgroundColor = 'yellow';
-        return playerTurn.activateButtons();
-
-        })
-        button3.addEventListener('click', function userClick3(){
-        user2Flow(3);
-        button3.removeEventListener('click', userClick3)
-        button3.style.backgroundColor = 'yellow';
-
-        })
-        button4.addEventListener('click', function userClick4(){
-        user2Flow(4);
-        button4.removeEventListener('click', userClick4)
-        button4.style.backgroundColor = 'yellow';
-
-        })
-        button5.addEventListener('click', function userClick5(){
-        user2Flow(5);
-        button5.removeEventListener('click', userClick5)
-        button5.style.backgroundColor = 'yellow';
-
-        })
-        button6.addEventListener('click', function userClick6(){
-        user2Flow(6);
-        button6.removeEventListener('click', userClick6)
-        button6.style.backgroundColor = 'yellow';
-
-        })
-        button7.addEventListener('click', function userClick7(){
-        user2Flow(7);
-        button7.removeEventListener('click', userClick7)
-        button7.style.backgroundColor = 'yellow';
-
-        })
-        button8.addEventListener('click', function userClick8(){
-        user2Flow(8);
-        button8.removeEventListener('click', userClick8);
-        button8.style.backgroundColor = 'yellow';
-
-        })
-        // Button Actions
+    }else if(playerTurn === 'player2' ){
+        nameButton.style.backgroundColor = player2Color.value;
+        playerTurn = 'player1';
+        return player2Turn(button);
     }
-   
-return{activateButtons}
-    
-})()
+}
 
-testButton.addEventListener('click', playerTurn.activateButtons)
+// Player 1 turn
+function player1Turn(button){
+    player1.playerValues.push(gameBoard.board[button])
+    console.log(player1.playerValues);
+}
+
+// Player 2 turn
+function player2Turn(button){
+    player2.player2Values.push(gameBoard.board[button])
+    console.log(player2.player2Values);
+}
+
+// Event listeners of the 9 buttons
+button0.addEventListener('click', function button0Press(){
+    checkTurn(0, button0)
+    button0.removeEventListener('click', button0Press)
+})
+
+button1.addEventListener('click', function button1Press(){
+    checkTurn(1, button1)
+    button1.removeEventListener('click', button1Press)
+})
+
+button2.addEventListener('click', function button2Press(){
+    checkTurn(2, button2)
+    button2.removeEventListener('click', button2Press)
+})
+
+button3.addEventListener('click', function button3Press(){
+    checkTurn(3, button3)
+    button3.removeEventListener('click', button3Press)
+})
+
+button4.addEventListener('click', function button4Press(){
+    checkTurn(4, button4)
+    button4.removeEventListener('click', button4Press)
+})
+
+button5.addEventListener('click', function button5Press(){
+    checkTurn(5, button5)
+    button5.removeEventListener('click', button5Press)
+})
+
+button6.addEventListener('click', function button6Press(){
+    checkTurn(6, button6)
+    button6.removeEventListener('click', button6Press)
+})
+
+button7.addEventListener('click', function button7Press(){
+    checkTurn(7, button7)
+    button7.removeEventListener('click', button7Press)
+})
+
+button8.addEventListener('click', function button8Press(){
+    checkTurn(8, button8)
+    button8.removeEventListener('click', button8Press)
+})
+
