@@ -34,7 +34,6 @@ let playerDisplayInfo = document.createElement('h3');
 
 // Submit player 1 information
 playersSubmit.addEventListener('click', function(){
-    console.log(player1Name.value);
     playersInputs.remove()
     playerDisplayInfo.innerText = `${player1Name.value} vs ${player2Name.value}`
     title.append(playerDisplayInfo)
@@ -58,12 +57,68 @@ function checkTurn(button, nameButton){
 function player1Turn(button){
     player1.playerValues.push(gameBoard.board[button])
     console.log(player1.playerValues);
+    if (player1.playerValues.includes('a') && player1.playerValues.includes('b') && player1.playerValues.includes('c')) {
+        playerDisplayInfo.innerText = `${player1Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player1.playerValues.includes('d') && player1.playerValues.includes('e') && player1.playerValues.includes('f')){
+        playerDisplayInfo.innerText = `${player1Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player1.playerValues.includes('g') && player1.playerValues.includes('h') && player1.playerValues.includes('i')){
+        playerDisplayInfo.innerText = `${player1Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player1.playerValues.includes('a') && player1.playerValues.includes('d') && player1.playerValues.includes('g')){
+        playerDisplayInfo.innerText = `${player1Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player1.playerValues.includes('b') && player1.playerValues.includes('e') && player1.playerValues.includes('h')){
+        playerDisplayInfo.innerText = `${player1Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player1.playerValues.includes('c') && player1.playerValues.includes('f') && player1.playerValues.includes('i')){
+        playerDisplayInfo.innerText = `${player1Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player1.playerValues.includes('a') && player1.playerValues.includes('e') && player1.playerValues.includes('i')){
+        playerDisplayInfo.innerText = `${player1Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player1.playerValues.includes('c') && player1.playerValues.includes('e') && player1.playerValues.includes('g')){
+        playerDisplayInfo.innerText = `${player1Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player1.playerValues.length == 5){
+        playerDisplayInfo.innerText = `Tie Game`
+        title.append(playerDisplayInfo)
+    }
 }
 
 // Player 2 turn
 function player2Turn(button){
     player2.player2Values.push(gameBoard.board[button])
     console.log(player2.player2Values);
+    if (player2.player2Values.includes('a') && player2.player2Values.includes('b') && player2.player2Values.includes('c')) {
+        playerDisplayInfo.innerText = `${player2Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player2.player2Values.includes('d') && player2.player2Values.includes('e') && player2.player2Values.includes('f')){
+        playerDisplayInfo.innerText = `${player2Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player2.player2Values.includes('g') && player2.player2Values.includes('h') && player2.player2Values.includes('i')){
+        playerDisplayInfo.innerText = `${player2Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player2.player2Values.includes('a') && player2.player2Values.includes('d') && player2.player2Values.includes('g')){
+        playerDisplayInfo.innerText = `${player2Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player2.player2Values.includes('b') && player2.player2Values.includes('e') && player2.player2Values.includes('h')){
+        playerDisplayInfo.innerText = `${player2Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player2.player2Values.includes('c') && player2.player2Values.includes('f') && player2.player2Values.includes('i')){
+        playerDisplayInfo.innerText = `${player2Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player2.player2Values.includes('a') && player2.player2Values.includes('e') && player2.player2Values.includes('i')){
+        playerDisplayInfo.innerText = `${player2Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player2.player2Values.includes('c') && player2.player2Values.includes('e') && player2.player2Values.includes('g')){
+        playerDisplayInfo.innerText = `${player2Name.value} Win`
+        title.append(playerDisplayInfo)
+    }else if(player2.player2Values.length == 5){
+        playerDisplayInfo.innerText = `Tie Game`
+        title.append(playerDisplayInfo)
+    }
 }
 
 // Event listeners of the 9 buttons
