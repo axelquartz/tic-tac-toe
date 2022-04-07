@@ -10,8 +10,20 @@
 </head>
 <body>
     <h1>Tic Tac Toe Game</h1>
-    <button id="test-button">Test</button>
-    <div class="main-container">
+    <h3>
+        What's your name and favorite color?
+    </h3>
+        <div id="user-inputs">
+            <div id="user-name">
+                <label for="name-select" id="name">Your Name</label>
+                <input type="text" name="nameSelect" id="name-select" placeholder="Joe Doe">
+            </div>
+            <div id="user-color">
+                <label for="color-select" id="color">Your Color</label>
+                <input type="color" name="colorSelect" id="color-select">
+            </div>
+        </div>
+        <div class="main-container">
         <div class="square" id="0"></div>
         <div class="square" id="1"></div>
         <div class="square" id="2"></div>
